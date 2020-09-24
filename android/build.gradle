@@ -1,0 +1,46 @@
+group 'com.dino.image_selector'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+apply plugin: 'com.android.library'
+apply from: "config.gradle"
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 19
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9'
+//    implementation files('sdk/android-arm/flutter.jar')
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation "androidx.appcompat:appcompat:${cfgs.version_appcompat}"
+    implementation "androidx.recyclerview:recyclerview:${cfgs.version_recyclerview}"
+    implementation "androidx.camera:camera-core:${cfgs.camera_core_version}"
+    implementation "androidx.camera:camera-camera2:${cfgs.camerax_version}"
+    implementation "com.github.bumptech.glide:glide:${cfgs.glide_version}"
+}
